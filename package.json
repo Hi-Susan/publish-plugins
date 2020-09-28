@@ -1,0 +1,24 @@
+{
+  "name": "publish-plugins",
+  "version": "1.0.0",
+  "description": "將npm plugins 匯出到指定的資料夾",
+  "main": "index.js",
+  "scripts": {
+    "plugins": "node npm/Publish.js -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hi-Susan/publish-plugins.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hi-Susan/publish-plugins/issues"
+  },
+  "homepage": "https://github.com/Hi-Susan/publish-plugins#readme",
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "jquery": "^3.5.1"
+  }
+}
