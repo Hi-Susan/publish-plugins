@@ -1,5 +1,7 @@
 const Plugins = require('./Plugins')
 const fse     = require('fs-extra')
+const fs = require('fs');
+const fileMatch = require('file-match');
 
 class Publish {
   constructor() {
@@ -28,12 +30,19 @@ class Publish {
     // Publish files
     Plugins.forEach((module) => {
       try {
-        if (fse.existsSync(module.from)) {
-          fse.copySync(module.from, module.to)
+        if(fse.existsSync(module.from)) {
+          const filterFunc = (src) => {
+            const stats = fs.statSync(src);
+            if(module.filter) {
+              const file_match = fileMatch(module.filter);
+              return !stats.isFile() || file_match(src);
+            }
+            return true
+          }
+          fse.copySync(module.from, module.to, { filter: filterFunc })
         } else {
           fse.copySync(module.from.replace('node_modules/', '../'), module.to)
         }
-
         if (this.options.verbose) {
           console.log(`Copied ${module.from} to ${module.to}`)
         }

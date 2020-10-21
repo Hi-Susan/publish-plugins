@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Hi-Susan/publish-plugins#readme",
   "dependencies": {
+    "file-match": "^1.0.2",
     "fs-extra": "^9.0.1",
     "jquery": "^3.5.1"
   }
